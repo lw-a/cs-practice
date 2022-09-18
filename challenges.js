@@ -102,3 +102,30 @@ function totalIntegers(array) {
 };
 const seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]);
 console.log(seven); // 7
+
+// Sum Squares
+function sumSquares(array) {
+	if(array.length === 0) return 0;
+
+  let total = 0;
+  let first = array.shift();
+
+  if (Array.isArray(first)){
+    total += sumSquares(first);
+	} else if (Number.isInteger(first)) {
+    total += first * first;
+	}
+
+	return total + sumSquares(array);
+}
+let l = [1,2,3];
+console.log(sumSquares(l)); // 1 + 4 + 9 = 14
+
+l = [[1,2],3];
+console.log(sumSquares(l)); // 1 + 4 + 9 = 14
+
+l = [[[[[[[[[1]]]]]]]]]
+console.log(sumSquares(l)); // 1 = 1
+
+l = [10,[[10],10],[10]]
+console.log(sumSquares(l)); // 100 + 100 + 100 + 100 = 400
