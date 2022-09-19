@@ -1,3 +1,3 @@
-# recursion
+# Computer Science Practice
 
-Getting a better understanding of recursion
+Trying to understand some complicated things here
