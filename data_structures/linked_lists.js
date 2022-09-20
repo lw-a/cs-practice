@@ -12,7 +12,7 @@ console.log(test.nextNode)
 // Linked List
 const LinkedList = () => {
 
-  let head = null;
+  let HEAD = null;
   let length = 0;
 
   // append(value)
@@ -20,9 +20,9 @@ const LinkedList = () => {
     const node = Node(value);
     length ++;
 
-    if (head === null) return head = node;
+    if (HEAD === null) return HEAD = node;
 
-    let pointer = head;
+    let pointer = HEAD;
     while (pointer.nextNode != null) {
       pointer = pointer.nextNode;
     };
@@ -35,19 +35,23 @@ const LinkedList = () => {
       const node = Node(value);
       length ++;
 
-      if (head === null) return head = node;
+      if (HEAD === null) return HEAD = node;
 
-      let temp = head.nextNode;
+      let temp = HEAD.nextNode;
 
-      head = node;
-      head.nextNode = temp;
+      HEAD = node;
+      HEAD.nextNode = temp;
     };
 
     const size = () => {
       return length;
     };
 
-  return { append, prepend, size };
+    const head = () => {
+      return HEAD;
+    };
+
+  return { append, prepend, size, head };
 };
 
 const list = LinkedList();
