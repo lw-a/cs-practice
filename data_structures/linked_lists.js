@@ -13,10 +13,12 @@ console.log(test.nextNode)
 const LinkedList = () => {
 
   let head = null;
+  let length = 0;
 
   // append(value)
   const append = (value) => {
     const node = Node(value);
+    length ++;
 
     if (head === null) return head = node;
 
@@ -31,6 +33,7 @@ const LinkedList = () => {
     // prepend(value)
     const prepend = (value) => {
       const node = Node(value);
+      length ++;
 
       if (head === null) return head = node;
 
@@ -40,14 +43,19 @@ const LinkedList = () => {
       head.nextNode = temp;
     };
 
-  return { append, prepend };
+    const size = () => {
+      return length;
+    };
+
+  return { append, prepend, size };
 };
 
 const list = LinkedList();
-console.log(list)
-list.append(1)
-list.append(2)
-list.append(3)
-console.log(list.append(4))
+console.log(list);
+list.append(1);
+list.append(2);
+list.append(3);
+console.log(list.append(4));
 // how do I test if it works?
-list.prepend(0)
+list.prepend(0);
+console.log(list.size()); // 5
