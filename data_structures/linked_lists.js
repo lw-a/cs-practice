@@ -51,7 +51,15 @@ const LinkedList = () => {
       return HEAD;
     };
 
-  return { append, prepend, size, head };
+    const tail = () => {
+      let pointer = HEAD;
+      while (pointer.nextNode != null) {
+        pointer = pointer.nextNode;
+      };
+      return pointer;
+    };
+
+  return { append, prepend, size, head, tail };
 };
 
 const list = LinkedList();
@@ -63,3 +71,5 @@ console.log(list.append(4));
 // how do I test if it works?
 list.prepend(0);
 console.log(list.size()); // 5
+console.log(list.head()); // node with 0
+console.log(list.tail()) // node with 4
