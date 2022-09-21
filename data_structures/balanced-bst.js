@@ -4,6 +4,8 @@ const Node = (value = null) => {
 
 const Tree = (array) => {
   console.log(array)
+  array.sort(function(a, b) { return a - b;})
+  console.log(array)
 
   const buildTree = (arr, start, end) => {
     if (start > end) return null;
@@ -15,10 +17,20 @@ const Tree = (array) => {
     return root;
   };
 
-  let root = buildTree(array, 0, array.length - 1)
+  let root = buildTree(array, 0, array.length - 1);
 
-  return { root };
+  const insert = (value, rootNode = root) => {
+    if (rootNode === null) return rootNode = Node(value);
+
+    if (value < rootNode.value) rootNode.leftChild = insert(value, rootNode.leftChild);
+    if (value > rootNode.value) rootNode.rightChild = insert(value, rootNode.rightChild);
+
+    return rootNode;
+  };
+
+  return { root, insert };
 };
 
 const tree = Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-console.log(tree.root)
+// console.log(tree.root)
+console.log(tree.insert(10))
