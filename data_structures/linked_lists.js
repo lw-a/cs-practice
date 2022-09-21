@@ -82,6 +82,5 @@ list.prepend(0);
 // console.log(list.tail()) // node with 4
 console.log(list.at(10)) // no index
 console.log(list.at(0)) // node with 0
-console.log(list.at(1)) // node with 1
 console.log(list.at(2)) // node with 2
 console.log(list.at(4)) // node with 4
