@@ -3,10 +3,10 @@ const Node = (value = null) => {
   return { value, nextNode: null };
 };
 
-console.log(Node())
-const test = Node(19);
-console.log(test.value)
-console.log(test.nextNode)
+// console.log(Node())
+// const test = Node(19);
+// console.log(test.value)
+// console.log(test.nextNode)
 
 // Linked List
 const LinkedList = () => {
@@ -66,7 +66,18 @@ const LinkedList = () => {
       return pointer;
     };
 
-  return { append, prepend, size, head, tail, at };
+    // pop
+    const pop = () => {
+      let pointer = HEAD;
+      const popped = tail();
+
+      at(length - 2).nextNode = null;
+      length--;
+
+      return popped;
+    };
+
+  return { append, prepend, size, head, tail, at, pop };
 };
 
 const list = LinkedList();
@@ -80,7 +91,13 @@ list.prepend(0);
 // console.log(list.size()); // 5
 // console.log(list.head()); // node with 0
 // console.log(list.tail()) // node with 4
-console.log(list.at(10)) // no index
-console.log(list.at(0)) // node with 0
-console.log(list.at(2)) // node with 2
-console.log(list.at(4)) // node with 4
+// console.log(list.at(10)) // no index
+// console.log(list.at(0)) // node with 0
+// console.log(list.at(2)) // node with 2
+// console.log(list.at(4)) // node with 4
+
+console.log(list.size()); // 5
+console.log(list.tail()) // node with 4
+console.log(list.pop()) // node with 4
+console.log(list.size()); // 4
+console.log(list.tail()) // node with 3
