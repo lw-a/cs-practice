@@ -100,11 +100,25 @@ const LinkedList = () => {
       return tail().value === value ? index : null;
     };
 
-  return { append, prepend, size, head, tail, at, pop, contains, find };
+    // toString
+    const toString = () => {
+
+      let string = "";
+      let pointer = HEAD;
+
+      while (pointer.nextNode !== null) {
+        string += `(${pointer.value}) -> `;
+        pointer = pointer.nextNode;
+      };
+
+      return string += `(${tail().value}) -> null`
+    };
+
+  return { append, prepend, size, head, tail, at, pop, contains, find, toString };
 };
 
 const list = LinkedList();
-console.log(list);
+// console.log(list);
 list.append(1);
 list.append(2);
 list.append(3);
@@ -129,8 +143,10 @@ list.prepend(0);
 // console.log(list.contains(3)) // true
 // console.log(list.contains(10)) // false
 
-console.log(list.find(0)) // 0
-console.log(list.find(2)) // 2
-console.log(list.find(3)) // 3
-console.log(list.find(5)) // null
-console.log(list.find(10)) // null
+// console.log(list.find(0)) // 0
+// console.log(list.find(2)) // 2
+// console.log(list.find(3)) // 3
+// console.log(list.find(5)) // null
+// console.log(list.find(10)) // null
+
+console.log(list.toString());
