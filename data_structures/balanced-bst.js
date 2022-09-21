@@ -35,9 +35,21 @@ const Tree = (array) => {
     return rootNode;
   };
 
-  return { root, insert };
+  const prettyPrint = (node = root, prefix = '', isLeft = true) => {
+    if (node.rightChild !== null) {
+      prettyPrint(node.rightChild, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+    }
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.value}`);
+    if (node.leftChild !== null) {
+      prettyPrint(node.leftChild, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    }
+  }
+
+  return { root, insert, prettyPrint };
 };
 
 const tree = Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 // console.log(tree.root)
+tree.prettyPrint();
 console.log(tree.insert(10))
+tree.prettyPrint();
