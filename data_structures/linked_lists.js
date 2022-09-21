@@ -57,7 +57,7 @@ const LinkedList = () => {
 
     // at(index)
     const at = (index) => {
-      if (index > length) return `no index of ${index}`;
+      if (index > length) return null;
       if (index === 0) return HEAD;
       let pointer = HEAD;
       for (let i = 1; i < index; i++) {
@@ -84,10 +84,23 @@ const LinkedList = () => {
         if (pointer.value === value) return true;
         pointer = pointer.nextNode;
       };
-      return pointer.value === value ? true : false;
+      return tail().value === value ? true : false;
     };
 
-  return { append, prepend, size, head, tail, at, pop, contains };
+    // find(value)
+    const find = (value) => {
+      let pointer = HEAD;
+      let index = 1;
+      if (pointer.value === value) return 0;
+      while (pointer.nextNode !== null) {
+        if (pointer.value === value) return index;
+        pointer = pointer.nextNode;
+        index++;
+      };
+      return tail().value === value ? index : null;
+    };
+
+  return { append, prepend, size, head, tail, at, pop, contains, find };
 };
 
 const list = LinkedList();
@@ -113,5 +126,11 @@ list.prepend(0);
 // console.log(list.size()); // 4
 // console.log(list.tail()) // node with 3
 
-console.log(list.contains(3)) // true
-console.log(list.contains(10)) // false
+// console.log(list.contains(3)) // true
+// console.log(list.contains(10)) // false
+
+console.log(list.find(0)) // 0
+console.log(list.find(2)) // 2
+console.log(list.find(3)) // 3
+console.log(list.find(5)) // null
+console.log(list.find(10)) // null
