@@ -20,7 +20,7 @@ const LinkedList = () => {
     length ++;
     if (HEAD === null) return HEAD = node;
     let pointer = HEAD;
-    while (pointer.nextNode != null) {
+    while (pointer.nextNode !== null) {
       pointer = pointer.nextNode;
     };
     pointer.nextNode = node;
@@ -49,7 +49,7 @@ const LinkedList = () => {
     // tail
     const tail = () => {
       let pointer = HEAD;
-      while (pointer.nextNode != null) {
+      while (pointer.nextNode !== null) {
         pointer = pointer.nextNode;
       };
       return pointer;
@@ -77,7 +77,17 @@ const LinkedList = () => {
       return popped;
     };
 
-  return { append, prepend, size, head, tail, at, pop };
+    // contains(value)
+    const contains = (value) => {
+      let pointer = HEAD;
+      while (pointer.nextNode !== null) {
+        if (pointer.value === value) return true;
+        pointer = pointer.nextNode;
+      };
+      return pointer.value === value ? true : false;
+    };
+
+  return { append, prepend, size, head, tail, at, pop, contains };
 };
 
 const list = LinkedList();
@@ -91,13 +101,17 @@ list.prepend(0);
 // console.log(list.size()); // 5
 // console.log(list.head()); // node with 0
 // console.log(list.tail()) // node with 4
+
 // console.log(list.at(10)) // no index
 // console.log(list.at(0)) // node with 0
 // console.log(list.at(2)) // node with 2
 // console.log(list.at(4)) // node with 4
 
-console.log(list.size()); // 5
-console.log(list.tail()) // node with 4
-console.log(list.pop()) // node with 4
-console.log(list.size()); // 4
-console.log(list.tail()) // node with 3
+// console.log(list.size()); // 5
+// console.log(list.tail()) // node with 4
+// console.log(list.pop()) // node with 4
+// console.log(list.size()); // 4
+// console.log(list.tail()) // node with 3
+
+console.log(list.contains(3)) // true
+console.log(list.contains(10)) // false
