@@ -29,8 +29,11 @@ const Tree = (array) => {
   const insert = (value, rootNode = root) => {
     if (rootNode === null) return rootNode = Node(value);
 
-    if (value < rootNode.value) rootNode.leftChild = insert(value, rootNode.leftChild);
-    if (value > rootNode.value) rootNode.rightChild = insert(value, rootNode.rightChild);
+    if (value < rootNode.value) {
+      rootNode.leftChild = insert(value, rootNode.leftChild);
+    } else if (value > rootNode.value) {
+      rootNode.rightChild = insert(value, rootNode.rightChild);
+    }
 
     return rootNode;
   };
