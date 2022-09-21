@@ -3,16 +3,12 @@ const Node = (value = null) => {
 };
 
 const Tree = (array) => {
-  console.log(array)
   array.sort(function(a, b) { return a - b;})
-  console.log(array)
-
   const removeDuplicates = (array) => {
     return array.filter((a, b) => array.indexOf(a) === b)
   };
 
   array = removeDuplicates(array);
-  console.log(array)
 
   const buildTree = (arr, start, end) => {
     if (start > end) return null;
