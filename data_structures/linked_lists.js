@@ -72,10 +72,8 @@ const LinkedList = () => {
     if (!HEAD) return null;
 
     const popped = tail();
-
     at(length - 2).nextNode = null;
     length--;
-
     return popped;
   };
 
@@ -112,48 +110,12 @@ const LinkedList = () => {
 
     let string = "";
     let pointer = HEAD;
-
     while (pointer.nextNode !== null) {
       string += `(${pointer.value}) -> `;
       pointer = pointer.nextNode;
     };
-
     return string += `(${tail().value}) -> null`
   };
 
   return { append, prepend, size, head, tail, at, pop, contains, find, toString };
 };
-
-const list = LinkedList();
-// console.log(list);
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.prepend(0);
-// how do I test if it works?
-// console.log(list.size()); // 5
-// console.log(list.head()); // node with 0
-// console.log(list.tail()) // node with 4
-
-// console.log(list.at(10)) // no index
-// console.log(list.at(0)) // node with 0
-// console.log(list.at(2)) // node with 2
-// console.log(list.at(4)) // node with 4
-
-// console.log(list.size()); // 5
-// console.log(list.tail()) // node with 4
-// console.log(list.pop()) // node with 4
-// console.log(list.size()); // 4
-// console.log(list.tail()) // node with 3
-
-// console.log(list.contains(3)) // true
-// console.log(list.contains(10)) // false
-
-// console.log(list.find(0)) // 0
-// console.log(list.find(2)) // 2
-// console.log(list.find(3)) // 3
-// console.log(list.find(5)) // null
-// console.log(list.find(10)) // null
-
-console.log(list.toString());
